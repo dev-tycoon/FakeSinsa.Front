@@ -8,3 +8,7 @@
 ### 참고
 
 - 각 API 연동에 대해 테스트 케이스 필수
+
+
+### Tech Stacks
+- Node, Express, Sequelize
