@@ -1,0 +1,5 @@
+# jetbrain Idea
+
+node_modules
+.idea
+*.iml
