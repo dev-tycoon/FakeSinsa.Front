@@ -6,6 +6,10 @@ function getUsers(req, res, next) {
     });
 }
 
+
 module.exports = {
-    getUsers: getUsers
+    getUsers: getUsers,
+    redirectSignUp: function (req, res, next) {
+        return res.render('signup')
+    }
 };
