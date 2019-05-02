@@ -10,8 +10,8 @@
     <div>
         <form>
             <div>
-                <p> 이메일 : <input type="email"></p>
-                <p> 비밀번호 : <input type="password"></p>
+                <p> 이메일 : <input type="email" v-model="email" placeholder="이메일을 입력하세요."></p>
+                <p> 비밀번호 : <input type="password" v-model="password" placeholder="비밀번호를 입력하세요."></p>
             </div>
             <div>
                 <input type="button" value="로그인" v-on:click="onClickSignIn">
@@ -22,16 +22,49 @@
 <script src="/vue/dist/vue.min.js"></script>
 <script>
     (function () {
+
+        /**
+         * AJAX (GET)
+         */
+        function ajaxGet(uri, callback) {
+            fetch(uri).then(function (res) {
+                if (res.ok) {
+                    res.json().then(callback);
+                } else {
+                    console.log("Looks like the response wasn't perfect, got status", res.status);
+                }
+            }, function (e) {
+                console.log("Fetch failed!", e);
+            });
+        }
+
+        function ajaxPost(uri, body, callback) {
+            fetch(uri, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(body)
+            }).then(function (res) {
+                if (res.ok) {
+                    res.json().then(callback);
+                } else {
+                    console.log("Looks like the response wasn't perfect, got status", res.status);
+                }
+            }, function (e) {
+                console.log("Fetch failed!", e);
+            });
+        }
+
         let app = new Vue({
             el: '#container', //셀렉터
             data: { //데이터 바인딩
-
+                email : "",
+                password : ""
             },
             created : function(){},
-            mounted : function(){
-                alert("monted!")
-
-            },
+            mounted : function(){},
             watch : { // 프로퍼티 변경시 감지
                 property_name : function () {
 
@@ -39,7 +72,21 @@
             },
             methods : {
                 onClickSignIn : function () {
-                    alert("wow!");
+                    let email = this.email;
+                    let password = this.password;
+
+                    //서버에 전송하기
+                    ajaxPost('/user/signin',
+                        {
+                            email: email,
+                            password: password
+                        },
+                        function (response) {
+                            alert(response);
+                        }
+                    );
+
+
                 }
             }
         });

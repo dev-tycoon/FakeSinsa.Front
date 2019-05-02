@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
 
 app.use('/', indexRouter);
-app.use('/users', userRouter);
+app.use('/user', userRouter);
 
 app.use('/page/', pageRouter);
 
