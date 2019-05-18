@@ -11,7 +11,7 @@
 
 
 ### Tech Stacks
-- Node, Express, Sequelize
+- Node, Express, Sequalize
 
 
 ### Assignee
