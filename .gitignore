@@ -1,5 +1,9 @@
 # jetbrain Idea
 
-node_modules
 .idea
 *.iml
+
+#dependencies
+
+node_modules
+bower_components

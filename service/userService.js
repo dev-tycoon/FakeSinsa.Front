@@ -1,3 +1,4 @@
+const Q = require('q');
 const userRepository = require('../persistence/userRepository');
 
 function getUsers() {
@@ -5,5 +6,18 @@ function getUsers() {
 }
 
 module.exports = {
-    getUsers: getUsers
+    getUsers: getUsers,
+    getUserByEmail : function (email) {
+        let deferred = Q.defer();
+        if (email === "jhleed") {
+            deferred.resolve({
+                email: "jhleed",
+                password: "1234",
+                name: "이종호"
+            });
+        } else {
+            deferred.resolve(null);
+        }
+        return deferred.promise;
+    }
 };
