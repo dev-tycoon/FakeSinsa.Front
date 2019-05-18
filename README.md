@@ -17,4 +17,5 @@
 ### Assignee
 
 - Front : 석훈, 유진
-- Back : 현승, 유경
+- Back : 현승, 유경 
+- Manager : 종호
