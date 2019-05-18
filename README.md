@@ -15,3 +15,6 @@
 
 
 ### Assignee
+
+- Front : 석훈, 유진
+- Back : 현승, 유경
